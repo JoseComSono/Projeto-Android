@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:padding="16dp"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <EditText android:id="@+id/edtTitulo"
+        android:hint="Título" android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+    <EditText android:id="@+id/edtLatitude"
+        android:hint="Latitude" android:inputType="numberDecimal"
+        android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+    <EditText android:id="@+id/edtLongitude"
+        android:hint="Longitude" android:inputType="numberDecimal"
+        android:layout_width="match_parent" android:layout_height="wrap_content"/>
+
+    <Button android:id="@+id/btnEscolherImagem"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Escolher Imagem"/>
+
+    <ImageView android:id="@+id/imgSelecionada"
+        android:layout_width="match_parent" android:layout_height="200dp"
+        android:scaleType="centerCrop" android:layout_marginTop="8dp"/>
+
+    <Button android:id="@+id/btnSalvar"
+        android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:text="Guardar Local" android:layout_marginTop="12dp"/>
+</LinearLayout>

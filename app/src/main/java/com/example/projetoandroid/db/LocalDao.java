@@ -1,26 +1,24 @@
 package com.example.projetoandroid.db;
 
-import android.os.Bundle;
+import androidx.room.Dao;
+import androidx.room.Insert;
+import androidx.room.Query;
 
-import androidx.activity.EdgeToEdge;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
+import com.example.projetoandroid.model.Local;
 
-import com.example.projetoandroid.R;
+import java.util.List;
 
-public class LocalDao extends AppCompatActivity {
+@Dao
+public interface LocalDao {
+    @Insert
+    void insert(Local local);
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
-        setContentView(R.layout.activity_appdata_base);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
-    }
+    @Query("SELECT * FROM Local")
+    List<Local> getAll();
+
+    @Query("SELECT * FROM Local WHERE ABS(latitude - :lat) <= 0.05 AND ABS(longitude - :lon) <= 0.05")
+    List<Local> getLocaisProximos(double lat, double lon);
+
+    @Query("SELECT * FROM Local WHERE id = :id LIMIT 1")
+    Local getById(int id);
 }
